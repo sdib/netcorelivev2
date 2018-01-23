@@ -20,6 +20,12 @@
     <!-- Files not to publish (note that the 'dist' subfolders are re-added below) -->
     <Content Remove="ClientApp\**" />
   </ItemGroup>
+  
+    <ItemGroup>
+      <Content Include="node_modules\**" CopyToPublishDirectory="PreserveNewest" />
+      <Content Include="webpack.config.js" CopyToPublishDirectory="PreserveNewest" />
+      <Content Include="webpack.config.vendor.js" CopyToPublishDirectory="PreserveNewest" />
+    </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
     <!-- Ensure Node.js is installed -->
@@ -49,6 +55,7 @@
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       </ResolvedFileToPublish>
     </ItemGroup>
+    
   </Target>
 
 </Project>
